@@ -183,7 +183,7 @@ void substract_row(double **s_arr, int index, int size) {
 // divide_row 에서의 예외사항을 처리하기 위한 함수입니다.
 // 우선 전달 받은column index가 0이 아닌 것이 존재하는지
 // pivot_find를 확인하고 조건문에 사용합니다.
-// eg) 0 2 3 5
+// eg) 0 2 3 5 <=== 기준행 index 0
 //     0 1 5 3
 //     4 0 0 1 <=== find and swap
 
