@@ -151,7 +151,6 @@ void divide_row(double **s_arr, int index, int size) {
 		pegs = s_arr[i][index];
 		if (s_arr[index][index] == 0) {
 			swap_row(s_arr, &index, size);
-			print_row(s_arr, size);
 			pegs = s_arr[i][index];
 		}
 		if (pegs != 0)
