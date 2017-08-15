@@ -1,16 +1,16 @@
 /***********************************
-* B011202 Á¤¿äÇÑ
-* ÀÌ»ê¼öÇÐ °úÁ¦ 1 ÁýÇÕ ¿¬»êÇÏ±â
+* B011202 ì •ìš”í•œ
+* ì´ì‚°ìˆ˜í•™ ê³¼ì œ 1 ì§‘í•© ì—°ì‚°í•˜ê¸°
 *
-* 1 ÁýÇÕÀ» Á¤ÀÇ
-* 2 ±æÀÌ¿¡ ¸Â°Ô Ãâ·Â
-* 3 ÇÕÁýÇÕ ¿¬»ê
-* 4 ±³ÁýÇÕ ¿¬»ê
-* 5 Â÷ÁýÇÕ ¿¬»ê
-* 6 ´ëÄªÂ÷ÁýÇÕ ¿¬»ê (ÇÔ¼ö±¸Çö X)
+* 1 ì§‘í•©ì„ ì •ì˜
+* 2 ê¸¸ì´ì— ë§žê²Œ ì¶œë ¥
+* 3 í•©ì§‘í•© ì—°ì‚°
+* 4 êµì§‘í•© ì—°ì‚°
+* 5 ì°¨ì§‘í•© ì—°ì‚°
+* 6 ëŒ€ì¹­ì°¨ì§‘í•© ì—°ì‚° (í•¨ìˆ˜êµ¬í˜„ X)
 *
-* ¿¬»êÀ» µ½±âÀ§ÇØ Æ¯Á¤ ¿ø¼Ò°¡ ºñ±³ ´ë»ó ÁýÇÕÀÇ ¸â¹öÀÎÁö È®ÀÎÇÏ´Â ÇÔ¼ö°¡
-* ±¸ÇöµÇ¾î ÀÖ½À´Ï´Ù.
+* ì—°ì‚°ì„ ë•ê¸°ìœ„í•´ íŠ¹ì • ì›ì†Œê°€ ë¹„êµ ëŒ€ìƒ ì§‘í•©ì˜ ë©¤ë²„ì¸ì§€ í™•ì¸í•˜ëŠ” í•¨ìˆ˜ê°€
+* êµ¬í˜„ë˜ì–´ ìžˆìŠµë‹ˆë‹¤.
 ************************************/
 #include <stdio.h>
 #include <stdlib.h>
@@ -31,31 +31,31 @@ int main() {
 	defineSet(&setX, 'x');
 	defineSet(&setY, 'y');
 
-	printf("ÁýÇÕ X = ");
+	printf("ì§‘í•© X = ");
 	showSet(setX);
-	printf("ÁýÇÕ Y = ");
+	printf("ì§‘í•© Y = ");
 	showSet(setY);
 
 	SET setU = unionSet(setX, setY);
-	printf("ÇÕÁýÇÕ = ");
+	printf("í•©ì§‘í•© = ");
 
 
 	showSet(setU);
 
 	SET setI = interSet(setX, setY);
-	printf("±³ÁýÇÕ = ");
+	printf("êµì§‘í•© = ");
 	showSet(setI);
 
 	SET setXy = diffSet(setX, setY);
-	printf("Â÷ÁýÇÕ(X-Y) = ");
+	printf("ì°¨ì§‘í•©(X-Y) = ");
 	showSet(setXy);
 
 	SET setYx = diffSet(setY, setX);
-	printf("Â÷ÁýÇÕ(Y-X) = ");
+	printf("ì°¨ì§‘í•©(Y-X) = ");
 	showSet(setYx);
 
 	SET setSym = diffSet(setU, setI);
-	printf("´ëÄªÂ÷ÁýÇÕ = ");
+	printf("ëŒ€ì¹­ì°¨ì§‘í•© = ");
 	showSet(setSym);
 
 	free(setU.elem);
@@ -70,24 +70,24 @@ int main() {
 }
 
 /******************************
-*   !!ÁýÇÕ ¿ø¼Ò¿Í ±æÀÌ  Á¤ÀÇÇÏ±â
+*   !!ì§‘í•© ì›ì†Œì™€ ê¸¸ì´  ì •ì˜í•˜ê¸°
 *******************************/
 
 void defineSet(SET *set, char c) {
 	int i;
-	(c == 'x') ? printf("ÁýÇÕ XÀÇ ¿ø¼Ò°³¼ö ÀÔ·Â: ") : printf("ÁýÇÕ YÀÇ ¿ø¼Ò°³¼ö ÀÔ·Â: ");
+	(c == 'x') ? printf("ì§‘í•© Xì˜ ì›ì†Œê°œìˆ˜ ìž…ë ¥: ") : printf("ì§‘í•© Yì˜ ì›ì†Œê°œìˆ˜ ìž…ë ¥: ");
 	scanf("%d", &(set->len));
 	set->elem = (int*)malloc(sizeof(int)*(set->len));
 
 	for (i = 0; i<(set->len); i++) {
-		(c == 'x') ? printf("\tÁýÇÕ XÀÇ ") : printf("\tÁýÇÕ YÀÇ ");
-		printf("%d ¹øÂ° ¿ø¼Ò ÀÔ·Â : ", i + 1);
+		(c == 'x') ? printf("\tì§‘í•© Xì˜ ") : printf("\tì§‘í•© Yì˜ ");
+		printf("%d ë²ˆì§¸ ì›ì†Œ ìž…ë ¥ : ", i + 1);
 		scanf("%d", (set->elem + i));
 	}
 }
 
 /*******************
-*   !!ÁýÇÕ Ãâ·ÂÇÏ±â
+*   !!ì§‘í•© ì¶œë ¥í•˜ê¸°
 *******************/
 
 void showSet(SET set) {
@@ -98,8 +98,8 @@ void showSet(SET set) {
 }
 
 /****************************************
-*   !!Àü´ÞµÈ ÁýÇÕ¿¡ Àû¾îµµ ÇÏ³ª ÀÌ»óÀÇ
-*   Æ¯Á¤ ¿ø¼Ò°¡ Á¸ÀçÇÏ´ÂÁö È®ÀÎ
+*   !!ì „ë‹¬ëœ ì§‘í•©ì— ì ì–´ë„ í•˜ë‚˜ ì´ìƒì˜
+*   íŠ¹ì • ì›ì†Œê°€ ì¡´ìž¬í•˜ëŠ”ì§€ í™•ì¸
 ****************************************/
 int is_memberSet(int element, SET set) {
 	int i;
@@ -118,22 +118,22 @@ int is_memberSet(int element, SET set) {
 }
 
 /**************************************
-*  !!ÇÕÁýÇÕ
+*  !!í•©ì§‘í•©
 **************************************/
 
 SET unionSet(SET setA, SET setB) {
 	SET setU;
 	setU.len = 0;
 	setU.elem = (int*)malloc(sizeof(int)*(setA.len + setB.len));
-	int temp;    // ¹öºí Á¤·ÄÀ» À§ÇÑ ÀÓ½Ãº¯¼ö
+	int temp;    // ë²„ë¸” ì •ë ¬ì„ ìœ„í•œ ìž„ì‹œë³€ìˆ˜
 	int i, j;
 	/********************************
-	*  Ã¹ ¹øÂ° ÁýÇÕ ¿ø¼Ò º¹»ç
+	*  ì²« ë²ˆì§¸ ì§‘í•© ì›ì†Œ ë³µì‚¬
 	*********************************/
 	for (i = 0; i<(setA.len); i++) {
 		/*******************************
-		*  Ã¹ ¹øÂ° ÁýÇÕÀÇ ÇÑ ¿ø¼Ò°¡ »õ·Î
-		*  »ý¼ºµÈ ÁýÇÕÀÇ ¿ø¼Ò°¡ ¾Æ´Ò°æ¿ì °ª º¹»ç
+		*  ì²« ë²ˆì§¸ ì§‘í•©ì˜ í•œ ì›ì†Œê°€ ìƒˆë¡œ
+		*  ìƒì„±ëœ ì§‘í•©ì˜ ì›ì†Œê°€ ì•„ë‹ê²½ìš° ê°’ ë³µì‚¬
 		********************************/
 		if (!is_memberSet(setA.elem[i], setU)) {
 			setU.elem[setU.len] = *(setA.elem + i);
@@ -142,12 +142,12 @@ SET unionSet(SET setA, SET setB) {
 	}
 
 	/*******************************
-	*  µÎ ¹øÂ° ÁýÇÕ ¿ø¼Ò º¹»ç
+	*  ë‘ ë²ˆì§¸ ì§‘í•© ì›ì†Œ ë³µì‚¬
 	********************************/
 	for (i = 0; i<(setB.len); i++) {
 		/******************************
-		*  µÎ ¹øÂ° ÁýÇÕÀÇ ÇÑ ¿ø¼Ò°¡ »õ·Î
-		*  »ý¼ºµÈ ÁýÇÕÀÇ ¿ø¼Ò°¡ ¾Æ´Ò°æ¿ì °ª º¹»ç
+		*  ë‘ ë²ˆì§¸ ì§‘í•©ì˜ í•œ ì›ì†Œê°€ ìƒˆë¡œ
+		*  ìƒì„±ëœ ì§‘í•©ì˜ ì›ì†Œê°€ ì•„ë‹ê²½ìš° ê°’ ë³µì‚¬
 		********************************/
 		if (!is_memberSet(setB.elem[i], setU)) {
 			setU.elem[setU.len] = *(setB.elem + i);
@@ -168,7 +168,7 @@ SET unionSet(SET setA, SET setB) {
 }
 
 /*************************************
-*  !!±³ÁýÇÕ
+*  !!êµì§‘í•©
 **************************************/
 SET interSet(SET setA, SET setB) {
 	SET setI;
@@ -177,9 +177,9 @@ SET interSet(SET setA, SET setB) {
 	int i;
 
 	/*********************************
-	* ÇØ´ç ¿ø¼Ò°¡ µÎ¹øÂ° ÁýÇÕ¿¡
-	* ÀÖÀ»°æ¿ì && ÇØ´ç ¿ø¼Ò°¡ »ý¼ºµÈ
-	* ÁýÇÕ¿¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì °ª º¹»ç
+	* í•´ë‹¹ ì›ì†Œê°€ ë‘ë²ˆì§¸ ì§‘í•©ì—
+	* ìžˆì„ê²½ìš° && í•´ë‹¹ ì›ì†Œê°€ ìƒì„±ëœ
+	* ì§‘í•©ì— ì¡´ìž¬í•˜ì§€ ì•Šì„ ê²½ìš° ê°’ ë³µì‚¬
 	**********************************/
 	for (i = 0; i<setA.len; i++)
 		if (is_memberSet(setA.elem[i], setB) && !is_memberSet(setA.elem[i], setI))
@@ -189,7 +189,7 @@ SET interSet(SET setA, SET setB) {
 }
 
 /*************************************
-*  !!Â÷ÁýÇÕ
+*  !!ì°¨ì§‘í•©
 **************************************/
 SET diffSet(SET setA, SET setB) {
 	SET setD;
